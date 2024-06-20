@@ -35,7 +35,7 @@ class LevelThree extends Phaser.Scene
         this.load.image("level_background", "assets/images/blue_city.png");
         preloadBaseLevel(this);
         this.load.image("button", "assets/images/button.png")
-        this.plot = " As you sift through the intricate layers of code, each line reveals a crucial piece of the puzzle, guiding you closer to unveiling the truth behind the mystery.";
+        this.plot = "With each decoded fragment, the veil of deception begins to lift, exposing a web of intrigue that spans across the city. ";
         this.load.image("currentStage", "assets/images/current_stage_box.png");
     }
     create()
