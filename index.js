@@ -19,8 +19,8 @@ app.use("/game", express.static("game"));
 app.use(
   session({
     secret: "gameofcode",
+    saveUninitialized:false,
     resave: false,
-    saveUninitialized: true,
     cookie: { secure: false },
   })
 );
