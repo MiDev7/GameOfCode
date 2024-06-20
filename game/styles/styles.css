@@ -1,0 +1,14 @@
+.gameScreen
+{
+    overflow: hidden;
+    display: flex;
+    height: 95vh;
+}
+html,body
+{
+    background-color: black;
+}
+@font-face {
+    font-family: 'VT323';
+    src: url('../assets/fonts/VT323-Regular.ttf') format('truetype');
+}
