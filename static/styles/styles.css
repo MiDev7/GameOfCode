@@ -44,7 +44,7 @@ p
     height: 0px;
     top:5px
 }
-/Reset default margin,padding and box-sizing/
+/*Reset default margin,padding and box-sizing*/
 *{
     margin:0;
     padding:0;
@@ -53,7 +53,7 @@ p
     
 }
 
-/Styling the body which includes the background and centering/
+/*Styling the body which includes the background and centering*/
 body{
     display:flex;
     justify-content: center;
@@ -64,7 +64,7 @@ body{
 }
 
 
-/Styling the container/
+/*Styling the container*/
 .container{
     width: 420px;
     background-color: #5B89AE;
@@ -72,18 +72,18 @@ body{
     box-shadow:inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-/Hover effect for the container/
+/*Hover effect for the container*/
 .container:hover{
     box-shadow: inset 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
 }
 
-/Styling h1 element with the conatiner/
+/*Styling h1 element with the conatiner*/
 .container h1{
     font-size: 35px;
     text-align:center;
 }
 
-/Styling input boxes/
+/*Styling input boxes*/
 .container .input-box{
     width: 75%;
     height: 70px;
@@ -92,7 +92,7 @@ body{
 
 }
 
-/Styling input fields within the input-box/
+/*Styling input fields within the input-box*/
 .input-box input{
     width: 100%;
     height: 70%;
@@ -107,12 +107,12 @@ body{
     padding: 20px 45px 20px 20px;
 }
 
-/Styling input placeholders/
+/*Styling input placeholders*/
 .input-box input::placeholder{
    color: #ffff;
 }
 
-/Styling remember section/
+/*Styling remember section*/
 .container .remember{
     font-size: 14.5px;
     margin: -5px 2px 20px;
@@ -120,14 +120,14 @@ body{
 
 }
 
-/Styling remember input checkbox/
+/*Styling remember input checkbox*/
 .remember input{
    accent-color: #fff;
    margin-right: 3px;
 
 }
 
-/Styling for the button in infos/
+/*Styling for the button in infos*/
 .infos .button{
     width: 50%;
     height: 40px;
@@ -158,13 +158,13 @@ body{
     font-weight: 400;
 }
 
-/Styling hover register link in infos/
+/*Styling hover register link in infos*/
 .register p a:hover{
     text-decoration: underline;
     color:#33ffad;
 }
 
-/Styling homepage link in infos/
+/*Styling homepage link in infos*/
 .infos .htmllink{
     text-align:end;
     margin-right: 7px;
@@ -177,7 +177,7 @@ body{
     font-size: 14.5;
 }
 
-/Styling hover homepage link in infos/
+/*Styling hover homepage link in infos*/
 .htmllink p a:hover{
     color:#33ffad ;
     text-decoration: underline;
