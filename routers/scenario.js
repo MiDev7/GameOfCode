@@ -17,14 +17,33 @@ const client = new MongoClient(connectionURI, {
 });
 
 try {
-  const database = client.db("GameOfCode");
-  const scenario = database.collection("scenario");
+  client.connect().then(() => {
+    console.log("Connected to the database successfully.");
+    const database = client.db("GameOfCode");
+    const scenario = database.collection("scenario");
 
-  console.log("Connected to scenario successfully.");
+    console.log("Connected to scenario successfully.");
 
-  router.get("/scenario", async (req, res) => {
-    const scenarios = await scenario.find({}).toArray();
-    res.json(scenarios);
+    router.get("/GetScenario", async (req, res) => {
+      const scenarios = await scenario.find({}).toArray();
+      res.json(scenarios);
+    });
+
+    router.post("/AddScenario", async (req, res) => {
+      const scenarioData = req.body;
+      const result = await scenario.insertOne(scenarioData);
+
+      res.json({
+        message: "Data stored in database, scenario added successfully",
+      });
+    });
+
+    router.get("/GetScenarioById", (req, res) => {
+      const id = req.body.id;
+      console.log(id);
+      const scenarioData = scenario.findOne({ _id: id });
+      res.json(scenarioData);
+    });
   });
 } catch (error) {
   console.log(error);
