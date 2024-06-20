@@ -103,11 +103,11 @@ class LevelOne extends Phaser.Scene
         if(answer == quiz_data[this.quizIndex].correct)
         {
             this.quizIndex++;
+            this.currentStage.x += 250;
             this.questionText.setText(" "); 
             if(this.quizIndex >= 3)
             {
                 this.scene.start("levelTwo");
-                this.c
             }
             this.loadButtons();
         }

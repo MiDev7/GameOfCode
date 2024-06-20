@@ -39,6 +39,7 @@ class LevelTwo extends Phaser.Scene
         preloadBaseLevel(this);
         this.load.image("button", "assets/images/button.png")
         this.plot = " As you sift through the intricate layers of code, each line reveals a crucial piece of the puzzle, guiding you closer to unveiling the truth behind the mystery.";
+        this.load.image("currentStage", "assets/images/current_stage_box.png");
     }
     create()
     {
@@ -52,6 +53,8 @@ class LevelTwo extends Phaser.Scene
             align: 'center', 
             wordWrap: { width: 500 } // This is the key part for text wrapping
         });
+        this.currentStage = this.add.image(500,100, "currentStage")
+        this.currentStage.setScale(2.5);
     }
     loadButtons() {
         const buttonConfig = [
@@ -101,6 +104,7 @@ class LevelTwo extends Phaser.Scene
         if(answer == quiz_data[this.quizIndex].correct)
         {
             this.quizIndex++;
+            this.currentStage.x += 250;
             this.questionText.setText(" "); 
             this.loadButtons();
         }
