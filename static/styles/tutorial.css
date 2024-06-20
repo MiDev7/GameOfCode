@@ -1,0 +1,39 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    overflow: hidden;
+}
+
+/*Styling the body which includes the background and centering*/
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:white;
+    background-image: url("/static/images/bgimage2.jpg");
+   
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.box {
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    margin: 90px;
+    margin-bottom: 60px; /* Adds space between the boxes */
+    opacity: 0.4;
+}
