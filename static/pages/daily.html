@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/styles/daily.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+    />
+    <title>Daily challenge</title>
+  </head>
+  <body>
+    <h1>Daily Challenge</h1>
+
+    <div id="dc-container">
+      <p id="difficulty"></p>
+      <div>
+        <h2>Scenario</h2>
+        <p id="scenario"></p>
+      </div>
+
+      <h2>Choices</h2>
+      <div class="grid-container">
+        <div class="option-card"></div>
+        <div class="option-card"></div>
+        <div class="option-card"></div>
+        <div class="option-card"></div>
+      </div>
+      <button>
+        <h2>Answer</h2>
+      </button>
+    </div>
+    <script>
+      const difficultyText = document.querySelector("#difficulty");
+      const scenarioText = document.querySelector("#scenario") || "";
+      const optionCards = document.querySelectorAll(".option-card");
+      window.onload = async () => {
+        await fetchDailyChallenge();
+      };
+
+      const fetchDailyChallenge = async () => {
+        const response = await fetch(
+          "http://localhost:3000/GetScenarioByLanguage"
+        );
+        const data = await response.json();
+        const { scenario, choices } = data;
+        scenarioText.textContent = scenario;
+        const optionCards = await document.querySelectorAll(".option-card");
+        choices.forEach((choice, index) => {
+          optionCards[index].textContent = choice;
+        });
+        if (data.difficulty === "Easy") {
+          difficultyText.textContent = "Difficulty: Easy";
+          difficultyText.style.color = "green";
+        } else if (data.difficulty === "Medium") {
+          difficultyText.textContent = "Difficulty: Medium";
+          difficultyText.style.color = "orange";
+        } else {
+          difficultyText.textContent = "Difficulty: Hard";
+          difficultyText.style.color = "red";
+        }
+
+        optionCards.forEach((card) => {
+          card.addEventListener("click", () => {
+            optionCards.forEach((card) => {
+              card.style.backgroundColor = "white";
+            });
+            card.style.backgroundColor = "lightblue";
+          });
+        });
+      };
+    </script>
+  </body>
+</html>

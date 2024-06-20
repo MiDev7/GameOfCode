@@ -25,16 +25,21 @@ app.use(
   })
 );
 
+app.get("/daily", (req, res) => {
+  if (!req.session.user) {
+    res.sendFile(__dirname + "/static/pages/daily.html");
+  }
+});
+
 app.get("/", (req, res) => {
   if (!req.session.user) {
     res.sendFile(__dirname + "/static/pages/welcome.html");
   }
 });
 
-app.get('/game',(req,res)=>{
+app.get("/game", (req, res) => {
   res.sendFile(__dirname + "/game/gamepage.html");
-
-})
+});
 
 app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/static/pages/login.html");
