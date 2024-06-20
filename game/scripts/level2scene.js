@@ -30,6 +30,7 @@ class LevelTwo extends Phaser.Scene
     {
         super("levelTwo");
         this.quizIndex = 0;
+        console.log(this.quizIndex);
     }
     preload()
     {
@@ -101,12 +102,16 @@ class LevelTwo extends Phaser.Scene
     
     checkCorrectAnswer(answer)
     {
+        console.log(this.quizIndex);
         if(answer == quiz_data[this.quizIndex].correct)
         {
             this.quizIndex++;
             this.currentStage.x += 250;
             this.questionText.setText(" "); 
-            this.loadButtons();
+            if(this.quizIndex >= 3)
+            {
+                this.scene.start("levelThree");
+            }
         }
         else
         {

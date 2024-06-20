@@ -2,41 +2,44 @@ import {loadBaseLevel,preloadBaseLevel} from "./baseLevelTemplate.js";
 const quiz_data = [
     {
       question:
-        "What is the term used to describe different kinds of information (like numbers, text, etc.) that a program can work with?",
-      options: ["variables", "data types", "functions", "algorithms"],
-      correct: "data types",
+        "What principle involves anticipating and managing potential errors in a program to ensure it runs smoothly?",
+      options: ["debugging", "error handling", "data types", "output"],
+      correct: "error handling",
     },
     {
       question:
-        "What is the process of sending information from a program to the outside world called?",
-      options: ["input", "output", "storage", "processing"],
-      correct: "output",
+        "What principle refers to a well-defined sequence of steps to solve a specific problem or perform a task?",
+      options: ["variables", "functions", "algorithms", "data structures"],
+      correct: "algorithms",
     },
     {
       question:
-        "What principle allows a program to make decisions and execute different actions based on those decisions?",
+        "What programming paradigm involves organizing code into objects that combine data and behavior?",
       options: [
-        "looping",
-        "functions",
-        "conditional statements",
-        "data structures",
+        "procedural programming",
+        "object oriented programming",
+        "functional programming",
+        "modular programming",
       ],
-      correct: "conditional statements",
+      correct: "object-oriented programming",
     },
   ];
-class LevelOne extends Phaser.Scene
+class LevelThree extends Phaser.Scene
 {
     constructor()
     {
-        super("levelOne");
+        super("levelThree");
         this.quizIndex = 0;
     }
     preload()
     {
-        this.load.image("level_background", "assets/images/light_blue_city.png");
+        this.quizIndex = 0;
+        this.scene.stop("levelTwo");
+        this.textures.remove("level_background");
+        this.load.image("level_background", "assets/images/blue_city.png");
         preloadBaseLevel(this);
         this.load.image("button", "assets/images/button.png")
-        this.plot = "As you delve into the digital evidence, you uncover the first encrypted clue left by the culprit. To decrypt it, you must apply your knowledge of fundamental programming principles.";
+        this.plot = " As you sift through the intricate layers of code, each line reveals a crucial piece of the puzzle, guiding you closer to unveiling the truth behind the mystery.";
         this.load.image("currentStage", "assets/images/current_stage_box.png");
     }
     create()
@@ -51,7 +54,6 @@ class LevelOne extends Phaser.Scene
             align: 'center', 
             wordWrap: { width: 500 } // This is the key part for text wrapping
         });
-        
         this.currentStage = this.add.image(500,100, "currentStage")
         this.currentStage.setScale(2.5);
     }
@@ -105,10 +107,6 @@ class LevelOne extends Phaser.Scene
             this.quizIndex++;
             this.currentStage.x += 250;
             this.questionText.setText(" "); 
-            if(this.quizIndex >= 3)
-            {
-                this.scene.start("levelTwo");
-            }
             this.loadButtons();
         }
         else
@@ -116,18 +114,5 @@ class LevelOne extends Phaser.Scene
             console.log("bad");
         }
     }
-    
 } 
-function startTimer() {
-    let timeLeft = timeLimit;
-    timerElement.textContent = timeLeft;
-    timerInterval = setInterval(() => {
-      timeLeft--;
-      timerElement.textContent = timeLeft;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        endGame("timer's up! you have run out of time");
-      }
-    }, 1000);
-  }
-export default LevelOne;;
+export default LevelThree;
