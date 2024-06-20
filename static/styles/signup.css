@@ -3,7 +3,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    
+    overflow: hidden;
 }
 
 /*Styling the body which includes the background and centering*/
@@ -21,10 +21,11 @@ body{
 /*Styling the container*/
 .container{
     width: 420px;
+    height: 550px;
     background-color: #001a33;
     border-radius: 10px;
     box-shadow:inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-    font-family:  'VT323', monospace;
+    font-family: 'VT323', monospace;
     
 }
 
@@ -72,7 +73,7 @@ body{
 }
 
 /*Styling for the button in infos*/
-.infos #login_button{
+.infos #registration_button{
     font-family: 'VT323', monospace ;
     font-size: 20px;
     width: 50%;
@@ -87,10 +88,11 @@ body{
     border: 2px solid #e7e7e7;
     transition-duration: 0.4s;
     margin-left: 103px;
+    margin-top: -25px;
 }
 
 /*Styling for the hover button in infos*/
-.infos #login_button:hover{
+.infos #registration_button:hover{
     background-color:  #b3b3b3;
 }
 

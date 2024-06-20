@@ -1,3 +1,5 @@
+var notyf = new Notyf();
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const login_button = document.getElementById("login_button");
 
@@ -18,7 +20,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         // Validation for all entries to check if they have been filled out
         if (!username || !password) {
-            console.log("Please fill out the form");
+            notyf.error({
+                message: "Please fill out the form",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })
             return;
         }
 
@@ -34,16 +40,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then((data) => {
             //if username or password is incorrect message will be displayed
             if (data.error) {
-                console.log("Credentials are incorrect. Please try again")
+                notyf.error({
+                    message: "Credentials are incorrect. Please try again",
+                    duration: 2000,
+                    position: { x: "center", y: "top"}
+                })
+                return;
             //if correct, success message will be displayed
             } else {
                 console.log('Success!', data);
-                console.log("login successful")
+                notyf.success({
+                    message: "Login Successful",
+                    duration: 2000,
+                    position: { x: "center", y: "top"}
+                })
+                window.location.href = "/static/pages/welcome.html"; 
             }
         })
         .catch((error) => {
             console.error("Error:", error);
-            console.log("failed to login")
+            notyf.error({
+                message: "Failed to login",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })
             return;
         });
     }
