@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     duration: 2000,
                     position: { x: "center", y: "top"}
                 })
-                return;
+                window.location.href = "/static/pages/welcome.html"; 
             }
         })
         .catch((error) => {

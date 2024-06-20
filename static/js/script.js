@@ -1,3 +1,5 @@
+var notyf = new Notyf();
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const signup_button = document.getElementById("registration_button");
 
@@ -22,35 +24,59 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         // Validation for all entries to check if they have been filled out
         if (!email || !fullname || !username || !password) {
-            console.log("Please fill out the form");
+            notyf.error({
+                message: "Please fill out the form",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })
             return;
         }
 
         // Validation for email address using regular expression
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            console.log("Please enter a valid email address")
+            notyf.error({
+                message: "Please enter a valid email",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })
             return;
         }
 
         // Validation for password
         // Checking for character length
         if (password.length <= 7) {
-            console.log("Your password should be at least 8 characters long.");
+            notyf.error({
+                message: "Your password should be at least 8 characters long.",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })
             return;
 
         // Checking if password contains symbols
         } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-            console.log("Password must contain at least one special character.");
+            notyf.error({
+                message: "Password must contain at least one special character.",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })
             return;
 
         // Checking if password contains numeric values
         } else if (!/\d/.test(password)) {
-            console.log("Password must contain at least one number");
+            notyf.error({
+                message: "Password must contain at least one number",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })
             return;
 
         // Checking if password contains uppercase alphabets
         } else if (!/[A-Z]/.test(password)) {
-            console.log("Password must contain at least one capital letter");
+            notyf.error({
+                message: "Password must contain at least one capital letter",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })
             return;
         }
 
@@ -64,11 +90,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then((response) => response.json())
         .then((data) => {
             console.log('Success!', data);
-            console.log("Registration Successful, please proceed to login")
+            notyf.success({
+                message: "Registration Successful, please proceed to login",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })
+            window.location.href = "/static/pages/login.html"; 
         })
         .catch((error) => {
             console.error("Error:", error);
-            console.log("Failed to register user. Please try again")
+            notyf.error({
+                message: "Failed to register user. Please try again",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })
 
         });
     }
