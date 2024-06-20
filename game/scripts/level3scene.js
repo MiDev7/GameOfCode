@@ -24,19 +24,19 @@ const quiz_data = [
       correct: "object-oriented programming",
     },
   ];
-class LevelTwo extends Phaser.Scene
+class LevelThree extends Phaser.Scene
 {
     constructor()
     {
-        super("levelTwo");
+        super("levelThree");
         this.quizIndex = 0;
-        console.log(this.quizIndex);
     }
     preload()
     {
-        this.scene.stop("levelOne");
+        this.quizIndex = 0;
+        this.scene.stop("levelTwo");
         this.textures.remove("level_background");
-        this.load.image("level_background", "assets/images/orange_city.png");
+        this.load.image("level_background", "assets/images/blue_city.png");
         preloadBaseLevel(this);
         this.load.image("button", "assets/images/button.png")
         this.plot = " As you sift through the intricate layers of code, each line reveals a crucial piece of the puzzle, guiding you closer to unveiling the truth behind the mystery.";
@@ -102,16 +102,12 @@ class LevelTwo extends Phaser.Scene
     
     checkCorrectAnswer(answer)
     {
-        console.log(this.quizIndex);
         if(answer == quiz_data[this.quizIndex].correct)
         {
             this.quizIndex++;
             this.currentStage.x += 250;
             this.questionText.setText(" "); 
-            if(this.quizIndex >= 3)
-            {
-                this.scene.start("levelThree");
-            }
+            this.loadButtons();
         }
         else
         {
@@ -119,4 +115,4 @@ class LevelTwo extends Phaser.Scene
         }
     }
 } 
-export default LevelTwo;
+export default LevelThree;

@@ -128,5 +128,18 @@ class LevelOne extends Phaser.Scene
         return;
         }
     }
+    
 } 
+function startTimer() {
+    let timeLeft = timeLimit;
+    timerElement.textContent = timeLeft;
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      timerElement.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        endGame("timer's up! you have run out of time");
+      }
+    }, 1000);
+  }
 export default LevelOne;;
