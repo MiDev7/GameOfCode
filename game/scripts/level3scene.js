@@ -130,9 +130,9 @@ class LevelThree extends Phaser.Scene {
                     duration: 2000,
                     position: { x: "center", y: "top" }
                 });
-                setTimeout(() => {
-                    window.location.href = "/static/pages/welcome.html"; 
-                }, 3000); // 3-second delay
+                // setTimeout(() => {
+                //     window.location.href = "/sstatic/pages/welcome.html"; 
+                // }, 3000); // 3-second delay
             }
         } else {
             notyf.error({
