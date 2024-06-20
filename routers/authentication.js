@@ -1,16 +1,18 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
+import dotenv from "dotenv";
 import { Router } from "express";
 
 const router = Router();
 
-const password = "Taran2706!";
-const username = "tb848";
-const server = "cluster0.2ior5mc.mongodb.net";
+const connectionURI = process.env.MONGO_URI;
 
-const encodedeusername = encodeURIComponent(username);
-const encodedpassword = encodeURIComponent(password);
-
-const connectionURI = `mongodb+srv://${encodedeusername}:${encodedpassword}@${server}/?retryWrites=true&w=majority&routerName=Cluster0`;
+const client = new MongoClient(connectionURI,{
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
+  });
 
 // Connect to MongoDB
 client
@@ -33,22 +35,20 @@ client
     // Parse JSON bodies for incoming requests
     router.use(express.json());
 
-    // Handle POST requests for registration
-    router.post("/registration", async (req, res) => {
-      try {
-        // Extract user data from the request body
-        const userData = req.body;
-        // Insert user data into the "users" collection
-        const result = await collection.insertOne(userData);
-        // Send a response indicating success and the data has been received
-        res.json({
-          message: "Data stored in database, user registered successfully",
+        // Handle POST requests for registration
+        router.post('/signup', async (req, res) => {
+            try {
+                // Extract user data from the request body
+                const userData = req.body;
+                // Insert user data into the "users" collection
+                const result = await collection.insertOne(userData);
+                // Send a response indicating success and the data has been received
+                res.json({ message: "Data stored in database, user registered successfully" });
+            } catch (error) {
+                // Handle errors and send a 500 Internal Server Error response
+                res.status(500).json({ error: "Internal server error" });
+            }
         });
-      } catch (error) {
-        // Handle errors and send a 500 Internal Server Error response
-        res.status(500).json({ error: "Internal server error" });
-      }
-    });
 
     // Handle POST requests for login
     router.post("/login", async (req, res) => {
