@@ -11,16 +11,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const password = "Taran2706!";
-const username = "tb848";
-const server = "cluster0.2ior5mc.mongodb.net";
-
-const encodedeusername = encodeURIComponent(username);
-const encodedpassword = encodeURIComponent(password);
-
-const connectionURI = `mongodb+srv://${encodedeusername}:${encodedpassword}@${server}/?retryWrites=true&w=majority&appName=Cluster0`;
-
-
 app.use(express.static("static"));
 
 app.get("/", (req, res) => {
