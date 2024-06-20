@@ -44,6 +44,10 @@ app.get("/level_two", (req, res) => {
   res.sendFile(__dirname + "/static/pages/level_two.html");
 })
 
+app.get("/level_three", (req, res) => {
+  res.sendFile(__dirname + "/static/pages/level_three.html");
+})
+
 app.use(combinedRouter);
 
 app.listen(PORT, () => {
