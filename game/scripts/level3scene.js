@@ -3,28 +3,23 @@ import {loadBaseLevel,preloadBaseLevel} from "./baseLevelTemplate.js";
 const quiz_data = [
     {
       question:
-        "What principle involves anticipating and managing potential errors in a program to ensure it runs smoothly?",
-      options: ["debugging", "error handling", "data types", "output"],
-      correct: "error handling",
+        "What principle involves reading from and writing to data storage to manage information persistently?",
+      options: ["input", "output", "file i/o", "error handling"],
+      correct: "file i/o",
     },
     {
       question:
-        "What principle refers to a well-defined sequence of steps to solve a specific problem or perform a task?",
-      options: ["variables", "functions", "algorithms", "data structures"],
-      correct: "algorithms",
+        "What principle involves a function calling itself to solve smaller instances of the same problem?",
+      options: ["iteration", "recursion", "modular programming", "oop"],
+      correct: "recursion",
     },
     {
       question:
-        "What programming paradigm involves organizing code into objects that combine data and behavior?",
-      options: [
-        "procedural programming",
-        "object oriented programming",
-        "functional programming",
-        "modular programming",
-      ],
-      correct: "object-oriented programming",
+        "What term refers to general reusable solutions to common problems in software design?",
+      options: ["data structures", "design patterns", "functions", "algorithms"],
+      correct: "design patterns",
     },
-  ];
+  ];    
 class LevelThree extends Phaser.Scene
 {
     constructor()
