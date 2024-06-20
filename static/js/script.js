@@ -1,36 +1,5 @@
-//validate user login credentaials
-function VData() {
-    //get values frm input data fields
-    let Username = document.getElementById('Username').value;
-    let Password = document.getElementById('Password').value;
+var notyf = new Notyf();
 
-    // Check if the required fields are not empty
-    if (Username === '' || Password === '') {
-        alert("Please fill in all the fields.");
-        return;
-    }
-
-    //retrieve user records from local storage
-    let userRecords = JSON.parse(localStorage.getItem("users")) || [];
-    const foundUser = userRecords.find(user => user.Username== Username && user.Password === Password);
-
-    if (foundUser) {
-
-        if (foundUser.Password === Password){
-        // Login successful
-        alert("Login successful!");
-
-        window.location.href = "../index.html";
-    }else {
-        // Invalid login
-        alert("Invalid password. Please try again.");
-    }
-    } else {
-        alert("Wrong Password. Please try again")
-    }
-
-   
-}
 
 function registration() {
     const data = {
@@ -103,5 +72,34 @@ function registration() {
         })
         return;
     }
+
+    fetch("http://localhost:3000/registration", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+    .then((response) => response.json())
+    //if data has been sent correctly, the success message to be displayed
+    .then((data) => {
+        console.log('Success!', data);
+        notyf.success({
+            message: "Registration Successful, please proceed to login",
+            duration: 2000
+        })
+    })
+    //else error message will be displayed
+    .catch((error) => {
+        console.error("Error:", error);
+        notyf.error({
+            message: "Failed to register user. Please try again",
+            duration: 2000,
+            position: { x: "center", y: "top"}
+        })
+        return;
+    });
+
+
 }
 
