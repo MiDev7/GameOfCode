@@ -14,6 +14,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(express.json());
 
 app.use("/static", express.static("static"));
+app.use("/game", express.static("game"));
 
 app.use(
   session({
@@ -29,6 +30,11 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/static/pages/welcome.html");
   }
 });
+
+app.get('/game',(req,res)=>{
+  res.sendFile(__dirname + "/game/gamepage.html");
+
+})
 
 app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/static/pages/login.html");
@@ -49,6 +55,10 @@ app.get("/level_two", (req, res) => {
 app.get("/level_three", (req, res) => {
   res.sendFile(__dirname + "/static/pages/level_three.html");
 });
+
+// app.get("/game", (req, res) => {
+//   res.sendFile(__dirname + "/game/gamepage.html");
+// });
 
 app.use(combinedRouter);
 
