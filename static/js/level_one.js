@@ -18,7 +18,8 @@ const quiz_data = [
             "processing"
         ],
         correct: "output",
-    },    {
+    },    
+    {
         question: "What principle allows a program to make decisions and execute different actions based on those decisions?",
         options: [
             "looping",
@@ -27,6 +28,26 @@ const quiz_data = [
             "data structures"
         ],
         correct: "conditional statements",
+    },
+    {
+        question: "What principle allows a program to repeat actions multiple times?",
+        options: [
+            "variables",
+            "functions",
+            "conditional statements",
+            "loops"
+        ],
+        correct: "loops",
+    },
+    {
+        question: "What is the principle of grouping a set of actions together so they can be reused called?",
+        options: [
+            "variables",
+            "data types",
+            "functions",
+            "loops"
+        ],
+        correct: "functions",
     },
 ]
 

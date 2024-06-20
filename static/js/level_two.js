@@ -1,24 +1,21 @@
 const quiz_data = [
     {
-        question: "What principle refers to the different ways of organizing and storing data to enable efficient access and modification?",
+        question: "In a stack data structure, the last element added is the first one to be removed.",
         options: [
-            "variables",
-            "data structures",
-            "functions",
-            "algorithms"
+            "true",
+            "false"
         ],
-        correct: "data structures",
+        correct: "true",
     },
     {
-        question: "What principle involves breaking down a program into smaller, manageable, and reusable pieces?",
+        question: "Modular programming is a technique where a program is divided into smaller, self-contained units called modules, which can be developed and tested independently.",
         options: [
-            "conditional statement",
-            "modular programming",
-            "loops",
-            "data types"
+            "true",
+            "false"
         ],
-        correct: "modular programming",
-    },    {
+        correct: "true",
+    },    
+    {
         question: "What principle involves anticipating and managing potential errors in a program to ensure it runs smoothly?",
         options: [
             "debugging",
@@ -28,6 +25,26 @@ const quiz_data = [
         ],
         correct: "error handling",
     },
+    {
+        question: "What principle refers to a well-defined sequence of steps to solve a specific problem or perform a task?",
+        options: [
+            "variables",
+            "functions",
+            "algorithms",
+            "data structures"
+        ],
+        correct: "algorithms",
+    },
+    {
+        question: "What programming paradigm involves organizing code into objects that combine data and behavior?",
+        options: [
+            "procedural programming",
+            "object oriented programming",
+            "functional programming",
+            "modular programming"
+        ],
+        correct: "object-oriented programming",
+    },
 ]
 
 let currentQuestionIndex = 0;
@@ -35,7 +52,7 @@ let timerInterval;
 const quizContainer = document.getElementById("quiz");
 const resultContainer = document.getElementById("result");
 const timerElement = document.getElementById("timer");
-const timeLimit = 30;
+const timeLimit = 60;
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const submit_button = document.getElementById("submit_button");
