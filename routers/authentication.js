@@ -12,6 +12,14 @@ const encodedpassword = encodeURIComponent(password);
 
 const connectionURI = `mongodb+srv://${encodedeusername}:${encodedpassword}@${server}/?retryWrites=true&w=majority&routerName=Cluster0`;
 
+const client = new MongoClient(connectionURI, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: false,
+        deprecationErrors: true,
+    }
+});
+
 // Connect to MongoDB
 client.connect()
     .then(() => {
@@ -33,7 +41,7 @@ client.connect()
         router.use(express.json());
 
         // Handle POST requests for registration
-        router.post('/registration', async (req, res) => {
+        router.post('/signup', async (req, res) => {
             try {
                 // Extract user data from the request body
                 const userData = req.body;
