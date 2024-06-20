@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             return;
         }
 
-        fetch("http://localhost:3000/registration", {
+        fetch("http://localhost:3000/signup", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
