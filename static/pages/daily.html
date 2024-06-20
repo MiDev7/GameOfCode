@@ -27,14 +27,26 @@
         <div class="option-card"></div>
         <div class="option-card"></div>
       </div>
-      <button>
+      <button id="answerBtn">
         <h2>Answer</h2>
       </button>
+
+      <h2 id="explanationHeader">Explanation</h2>
+      <div id="explanationSection">
+        <p id="explanation"></p>
+      </div>
     </div>
     <script>
       const difficultyText = document.querySelector("#difficulty");
       const scenarioText = document.querySelector("#scenario") || "";
-      const optionCards = document.querySelectorAll(".option-card");
+      const explanationHeader = document.querySelector("#explanationHeader");
+
+      const explanationSection = document.querySelector("#explanationSection");
+
+      const explanationText = document.querySelector("#explanation");
+
+      const answerBtn = document.querySelector("#answerBtn");
+
       window.onload = async () => {
         await fetchDailyChallenge();
       };
@@ -44,12 +56,33 @@
           "http://localhost:3000/GetScenarioByLanguage"
         );
         const data = await response.json();
-        const { scenario, choices } = data;
+        const { scenario, choices, answer, explanation } = data;
         scenarioText.textContent = scenario;
-        const optionCards = await document.querySelectorAll(".option-card");
+        const optionCards = document.querySelectorAll(".option-card");
         choices.forEach((choice, index) => {
           optionCards[index].textContent = choice;
         });
+
+        explanationText.textContent = explanation;
+
+        answerBtn.addEventListener("click", () => {
+          console.log("clicked");
+          optionCards.forEach((card) => {
+            if (
+              card.textContent === answer ||
+              answer == card.textContent.slice(0, 1)
+            ) {
+              console.log(card.textContent.slice(0, 1));
+              card.style.color = "green";
+              explanationSection.style.display = "block";
+              explanationHeader.style.display = "block";
+              setTimeout(() => {
+                window.location.reload();
+              }, 10000);
+            }
+          });
+        });
+
         if (data.difficulty === "Easy") {
           difficultyText.textContent = "Difficulty: Easy";
           difficultyText.style.color = "green";
@@ -63,10 +96,22 @@
 
         optionCards.forEach((card) => {
           card.addEventListener("click", () => {
-            optionCards.forEach((card) => {
-              card.style.backgroundColor = "white";
-            });
-            card.style.backgroundColor = "lightblue";
+            console.log(card.textContent);
+            if (
+              card.textContent === answer ||
+              answer == card.textContent.slice(0, 1)
+            ) {
+              console.log(card.textContent.slice(0, 1));
+              explanationSection.style.display = "block";
+              explanationHeader.style.display = "block";
+              card.style.color = "green";
+            } else {
+              card.style.color = "red";
+              // wait for 3 seconds before changing back the color to white
+              setTimeout(() => {
+                card.style.color = "white";
+              }, 3000);
+            }
           });
         });
       };
