@@ -5,7 +5,6 @@
     overflow: hidden;
 }
 
-/*Styling the body which includes the background and centering*/
 body{
     display:flex;
     justify-content: center;
@@ -34,6 +33,6 @@ body{
     font-size: 1.5rem;
     border-radius: 5px;
     margin: 90px;
-    margin-bottom: 60px; /* Adds space between the boxes */
+    margin-bottom: 60px; 
     opacity: 0.4;
 }
