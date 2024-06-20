@@ -1,18 +1,19 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from "dotenv";
 import { Router } from "express";
+import express from "express";
 
 const router = Router();
 
 const connectionURI = process.env.MONGO_URI;
 
-const client = new MongoClient(connectionURI,{
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    }
-  });
+const client = new MongoClient(connectionURI, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
 
 // Connect to MongoDB
 client
@@ -24,9 +25,6 @@ client
     const collection = database.collection("Users");
     console.log("connected to Users collection");
 
-    // Serve static files from the current directory
-    router.use(express.static(path.join(__dirname)));
-
     // Handle GET requests to the root URL
     router.get("/", (req, res) => {
       res.sendFile(path.join(__dirname, "index.html"));
@@ -35,20 +33,22 @@ client
     // Parse JSON bodies for incoming requests
     router.use(express.json());
 
-        // Handle POST requests for registration
-        router.post('/signup', async (req, res) => {
-            try {
-                // Extract user data from the request body
-                const userData = req.body;
-                // Insert user data into the "users" collection
-                const result = await collection.insertOne(userData);
-                // Send a response indicating success and the data has been received
-                res.json({ message: "Data stored in database, user registered successfully" });
-            } catch (error) {
-                // Handle errors and send a 500 Internal Server Error response
-                res.status(500).json({ error: "Internal server error" });
-            }
+    // Handle POST requests for registration
+    router.post("/signup", async (req, res) => {
+      try {
+        // Extract user data from the request body
+        const userData = req.body;
+        // Insert user data into the "users" collection
+        const result = await collection.insertOne(userData);
+        // Send a response indicating success and the data has been received
+        res.json({
+          message: "Data stored in database, user registered successfully",
         });
+      } catch (error) {
+        // Handle errors and send a 500 Internal Server Error response
+        res.status(500).json({ error: "Internal server error" });
+      }
+    });
 
     // Handle POST requests for login
     router.post("/login", async (req, res) => {
@@ -95,9 +95,6 @@ client
         }
       });
     });
-
-    // Start the server and listen on the specified port
-    router.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
   .catch((err) => console.error("Error connecting to MongoDB: ", err));
 
