@@ -45,6 +45,16 @@ const quiz_data = [
         ],
         correct: "design patterns",
     },
+    {
+        question: "Consider a scenario where you need to create a program to manage a space mission. Which combination of programming principles and techniques would be most suitable for ensuring the program is efficient, maintainable, and error-free?",
+        options: [
+            "Using Object-Oriented Programming (OOP) to model spacecraft components, implementing error handling to manage unexpected situations, and applying algorithms to optimize trajectory calculations.",
+            "Utilizing variables and loops to control spacecraft operations, integrating modular programming for system reliability, and employing basic data types to manage telemetry data.",
+            "mplementing file I/O to record mission data, applying conditional statements for decision-making during the mission, and using functions to simplify code structure.",
+            "Using design patterns to enhance code reusability, combining stacks and queues for managing mission commands, and implementing recursion for real-time data processing."
+        ],
+        correct: "Using Object-Oriented Programming (OOP) to model spacecraft components, implementing error handling to manage unexpected situations, and applying algorithms to optimize trajectory calculations.",
+    },
 ]
 
 let currentQuestionIndex = 0;

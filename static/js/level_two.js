@@ -45,6 +45,16 @@ const quiz_data = [
         ],
         correct: "object-oriented programming",
     },
+    {
+        question: "Which principle is crucial for organizing and managing collections of data in complex programs?",
+        options: [
+            "Understanding how lists and dictionaries work.",
+            "Knowing how to implement and use loops.",
+            "Being able to write and use functions effectively.",
+            "Understanding modular programming."
+        ],
+        correct: "Understanding how lists and dictionaries work.",
+    },
 ]
 
 let currentQuestionIndex = 0;

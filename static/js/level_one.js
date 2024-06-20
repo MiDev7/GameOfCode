@@ -49,6 +49,16 @@ const quiz_data = [
         ],
         correct: "functions",
     },
+    {
+        question: "Which of the following statements best describes the main concepts learned in this level?",
+        options: [
+            "Variables store data, and conditional statements allow decisions based on conditions.",
+            "Loops allow repeated actions, and functions group code for reuse.",
+            "Input/Output operations enable interaction with users.",
+            "All of the above."
+        ],
+        correct: "All of the above.",
+    },
 ]
 
 let currentQuestionIndex = 0;
