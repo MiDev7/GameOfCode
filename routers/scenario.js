@@ -1,25 +1,21 @@
 import { Router } from "express";
-import { MongoClient } from "mongodb";
+import { MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const uri = process.env.MONGODB_URI;
+const connectionURI = process.env.MONGO_URI;
 
 const router = Router();
 
-const database = null;
 
-const password = "Taran2706!";
-const username = "tb848";
-const server = "cluster0.2ior5mc.mongodb.net";
-
-const encodedeusername = encodeURIComponent(username);
-const encodedpassword = encodeURIComponent(password);
-
-const connectionURI = `mongodb+srv://${encodedeusername}:${encodedpassword}@${server}/?retryWrites=true&w=majority&routerName=Cluster0`;
-
-const client = new MongoClient(connectionURI);
+const client = new MongoClient(connectionURI,{
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
 
 try {
   const database = client.db("GameOfCode");
