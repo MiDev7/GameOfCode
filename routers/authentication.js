@@ -1,10 +1,8 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
-import dotenv from "dotenv";
 import express from "express";
-import path from "path";
 
 
-const router = Router();
+const router = express.Router();
 
 const connectionURI = process.env.MONGO_URI;
 
@@ -26,13 +24,8 @@ client
     const collection = database.collection("Users");
     console.log("connected to Users collection");
 
-    // Serve static files from the current directory
-    router.use(express.static(path.join(__dirname)));
 
-    // Handle GET requests to the root URL
-    router.get("/", (req, res) => {
-      res.sendFile(path.join(__dirname, "index.html"));
-    });
+
 
     // Parse JSON bodies for incoming requests
     router.use(express.json());
