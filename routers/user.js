@@ -1,19 +1,17 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import express from "express";
 
-  
-
 const router = express.Router();
 
 const connectionURI = process.env.MONGO_URI;
 
-const client = new MongoClient(connectionURI,{
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    }
-  });
+const client = new MongoClient(connectionURI, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
 
 // Connect to MongoDB
 client
@@ -25,26 +23,25 @@ client
     const collection = database.collection("Users");
     console.log("connected to Users collection");
 
-
-
-
     // Parse JSON bodies for incoming requests
     router.use(express.json());
 
-        // Handle POST requests for registration
-        router.post('/signup', async (req, res) => {
-            try {
-                // Extract user data from the request body
-                const userData = req.body;
-                // Insert user data into the "users" collection
-                const result = await collection.insertOne(userData);
-                // Send a response indicating success and the data has been received
-                res.json({ message: "Data stored in database, user registered successfully" });
-            } catch (error) {
-                // Handle errors and send a 500 Internal Server Error response
-                res.status(500).json({ error: "Internal server error" });
-            }
+    // Handle POST requests for registration
+    router.post("/signup", async (req, res) => {
+      try {
+        // Extract user data from the request body
+        const userData = req.body;
+        // Insert user data into the "users" collection
+        const result = await collection.insertOne(userData);
+        // Send a response indicating success and the data has been received
+        res.json({
+          message: "Data stored in database, user registered successfully",
         });
+      } catch (error) {
+        // Handle errors and send a 500 Internal Server Error response
+        res.status(500).json({ error: "Internal server error" });
+      }
+    });
 
     // Handle POST requests for login
     router.post("/login", async (req, res) => {
@@ -92,7 +89,18 @@ client
       });
     });
 
- })
+    router.post("/incrementStreak", (req, res) => {
+      const user = req.session.username;
+      const currentUser = collection.findOne({ username: user });
+      if (req.session.username) {
+        currentUser.streak += 1;
+        collection.updateOne(
+          { username: user },
+          { $set: { streak: currentUser.streak } }
+        );
+      }
+    });
+  })
   .catch((err) => console.error("Error connecting to MongoDB: ", err));
 
 export default router;
