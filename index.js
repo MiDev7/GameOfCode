@@ -38,15 +38,19 @@ app.get("/signup", (req, res) => {
 
 app.get("/level_one", (req, res) => {
   res.sendFile(__dirname + "/static/pages/level_one.html");
-})
+});
 
 app.get("/level_two", (req, res) => {
   res.sendFile(__dirname + "/static/pages/level_two.html");
-})
+});
 
 app.get("/level_three", (req, res) => {
   res.sendFile(__dirname + "/static/pages/level_three.html");
-})
+});
+
+app.get("/game", (req, res) => {
+  res.sendFile(__dirname + "/game/gamepage.html");
+});
 
 app.use(combinedRouter);
 
