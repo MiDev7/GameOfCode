@@ -1,43 +1,47 @@
-/Reset default margin,padding and box-sizing/
+/*Reset default margin,padding and box-sizing*/
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: "Georgia",serif;
     
 }
 
-/Styling the body which includes the background and centering/
+/*Styling the body which includes the background and centering*/
 body{
     display:flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background:white;
+    background-image: url("/static/images/bg\ image1.jpg");
    
 }
 
 
-/Styling the container/
+/*Styling the container*/
 .container{
     width: 420px;
-    background-color: #5B89AE;
+    background-color: #001a33;
     border-radius: 10px;
     box-shadow:inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    font-family:  'VT323', monospace;
+    
 }
 
-/Hover effect for the container/
+/*Hover effect for the container*/
 .container:hover{
     box-shadow: inset 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
 }
 
-/Styling h1 element with the conatiner/
+/*Styling h1 element with the conatiner*/
 .container h1{
     font-size: 35px;
     text-align:center;
+    color: white;
+    margin-top: 10px;
 }
 
-/Styling input boxes/
+/*Styling input boxes*/
 .container .input-box{
     width: 75%;
     height: 70px;
@@ -46,7 +50,7 @@ body{
 
 }
 
-/Styling input fields within the input-box/
+/*Styling input fields within the input-box*/
 .input-box input{
     width: 100%;
     height: 70%;
@@ -59,30 +63,18 @@ body{
     color:#ffff;
     margin: 1px;
     padding: 20px 45px 20px 20px;
+    font-family:  'VT323', monospace;
 }
 
-/Styling input placeholders/
+/*Styling input placeholders*/
 .input-box input::placeholder{
    color: #ffff;
 }
 
-/Styling remember section/
-.container .remember{
-    font-size: 14.5px;
-    margin: -5px 2px 20px;
-    margin-left: 55px;
-
-}
-
-/Styling remember input checkbox/
-.remember input{
-   accent-color: #fff;
-   margin-right: 3px;
-
-}
-
-/Styling for the button in infos/
-.infos .button{
+/*Styling for the button in infos*/
+.infos #login_button{
+    font-family: 'VT323', monospace ;
+    font-size: 20px;
     width: 50%;
     height: 40px;
     background-color: #fff;
@@ -97,16 +89,17 @@ body{
     margin-left: 103px;
 }
 
-/Styling for the hover button in infos/
-.infos .button:hover{
+/*Styling for the hover button in infos*/
+.infos #login_button:hover{
     background-color:  #b3b3b3;
 }
 
-/Styling register link in infos/
+/*Styling register link in infos*/
 .infos .register{
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
+    color: white;
 }
 
 .register p a{
@@ -115,13 +108,13 @@ body{
     font-weight: 400;
 }
 
-/Styling hover register link in infos/
+/*Styling hover register link in infos*/
 .register p a:hover{
     text-decoration: underline;
     color:#33ffad;
 }
 
-/Styling homepage link in infos/
+/*Styling homepage link in infos*/
 .infos .htmllink{
     text-align:end;
     margin-right: 7px;
@@ -134,8 +127,11 @@ body{
     font-size: 14.5;
 }
 
-/Styling hover homepage link in infos/
+/*Styling hover homepage link in infos*/
 .htmllink p a:hover{
     color:#33ffad ;
     text-decoration: underline;
 }
+
+
+ 
