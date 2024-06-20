@@ -1,6 +1,7 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import express from "express";
 
+  
 
 const router = express.Router();
 
@@ -48,19 +49,19 @@ client
     // Handle POST requests for login
     router.post("/login", async (req, res) => {
       try {
-        const { UserName, Password } = req.body;
+        const { username, password } = req.body;
 
-        if (!UserName || !Password) {
+        if (!username || !password) {
           return res
             .status(400)
             .json({ error: "username and password not good" });
         }
 
-        const user = await collection.findOne({ UserName, Password });
+        const user = await collection.findOne({ username, password });
 
         if (user) {
           req.session.userid = user._id;
-          req.session.username = user.UserName;
+          req.session.username = user.username;
           if (!("username" in req.session)) {
             console.log("login failed");
           } else {
