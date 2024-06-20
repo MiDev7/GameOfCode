@@ -1,0 +1,139 @@
+/*Reset default margin,padding and box-sizing*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    overflow: hidden;
+}
+
+/*Styling the body which includes the background and centering*/
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:white;
+    background-image: url("/static/images/bg\ image1.jpg");
+   
+}
+
+
+/*Styling the container*/
+.container{
+    width: 420px;
+    height: 550px;
+    background-color: #001a33;
+    border-radius: 10px;
+    box-shadow:inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    font-family: 'VT323', monospace;
+    
+}
+
+/*Hover effect for the container*/
+.container:hover{
+    box-shadow: inset 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+/*Styling h1 element with the conatiner*/
+.container h1{
+    font-size: 35px;
+    text-align:center;
+    color: white;
+    margin-top: 10px;
+}
+
+/*Styling input boxes*/
+.container .input-box{
+    width: 75%;
+    height: 70px;
+    margin: 30px 0;
+    margin-left: 50px;
+
+}
+
+/*Styling input fields within the input-box*/
+.input-box input{
+    width: 100%;
+    height: 70%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    font-size: 14px;
+    color:#ffff;
+    margin: 1px;
+    padding: 20px 45px 20px 20px;
+    font-family:  'VT323', monospace;
+}
+
+/*Styling input placeholders*/
+.input-box input::placeholder{
+   color: #ffff;
+}
+
+/*Styling for the button in infos*/
+.infos #registration_button{
+    font-family: 'VT323', monospace ;
+    font-size: 20px;
+    width: 50%;
+    height: 40px;
+    background-color: #fff;
+    border:none;
+    outline:none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor:pointer; 
+    font-weight: 600;
+    border: 2px solid #e7e7e7;
+    transition-duration: 0.4s;
+    margin-left: 103px;
+    margin-top: -25px;
+}
+
+/*Styling for the hover button in infos*/
+.infos #registration_button:hover{
+    background-color:  #b3b3b3;
+}
+
+/*Styling register link in infos*/
+.infos .register{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+    color: white;
+}
+
+.register p a{
+    color:#fff;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+/*Styling hover register link in infos*/
+.register p a:hover{
+    text-decoration: underline;
+    color:#33ffad;
+}
+
+/*Styling homepage link in infos*/
+.infos .htmllink{
+    text-align:end;
+    margin-right: 7px;
+}
+
+.htmllink p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 14.5;
+}
+
+/*Styling hover homepage link in infos*/
+.htmllink p a:hover{
+    color:#33ffad ;
+    text-decoration: underline;
+}
+
+
+ 
