@@ -8,13 +8,12 @@ const connectionURI = process.env.MONGO_URI;
 
 const router = Router();
 
-
-const client = new MongoClient(connectionURI,{
+const client = new MongoClient(connectionURI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
 });
 
 try {
