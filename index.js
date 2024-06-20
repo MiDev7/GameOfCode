@@ -4,6 +4,8 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import combinedRouter from "./routers/index.js";
+import session from "express-session";
+
 
 const app = express();
 
@@ -14,7 +16,19 @@ app.use(express.json());
 
 app.use(express.static("static"));
 
+
+app.use(session({
+  secret: 'gameofcode',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
+
 app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/static/pages/index.html");
+});
+
+app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/static/pages/login.html");
 });
 

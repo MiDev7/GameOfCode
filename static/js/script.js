@@ -1,8 +1,4 @@
-console.log('p travail');
-
 document.addEventListener('DOMContentLoaded', (event) => {
-    console.log('p travail 2');
-
     const signup_button = document.getElementById("registration_button");
 
     if (!signup_button) {
