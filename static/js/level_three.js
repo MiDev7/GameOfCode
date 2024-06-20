@@ -1,24 +1,21 @@
 const quiz_data = [
     {
-        question: "What advanced structure can be used to manage hierarchical or networked data efficiently?",
+        question: "A binary tree is a type of data structure where each node can have up to three children.",
         options: [
-            "variables",
-            "arrays",
-            "linked lists",
-            "trees"
+            "true",
+            "false"
         ],
-        correct: "trees",
+        correct: "false",
     },
     {
-        question: "Which principle involves using complex steps to solve problems efficiently, often optimizing performance and resource usage?",
+        question: "An algorithm is a step-by-step procedure for solving a problem or accomplishing a task.",
         options: [
-            "simple loops",
-            "conditional statements",
-            "advanced algorithms",
-            "data types"
+            "true",
+            "false"
         ],
-        correct: "advanced algorithms",
-    },    {
+        correct: "true",
+    },    
+    {
         question: "What principle involves reading from and writing to data storage to manage information persistently?",
         options: [
             "input",
@@ -27,6 +24,26 @@ const quiz_data = [
             "error handling"
         ],
         correct: "file i/o",
+    },
+    {
+        question: "What principle involves a function calling itself to solve smaller instances of the same problem?",
+        options: [
+            "iteration",
+            "recursion",
+            "modular programming",
+            "oop"
+        ],
+        correct: "recursion",
+    },
+    {
+        question: "What term refers to general reusable solutions to common problems in software design?",
+        options: [
+            "data structures",
+            "design patterns",
+            "functions",
+            "algorithms"
+        ],
+        correct: "design patterns",
     },
 ]
 
@@ -37,7 +54,7 @@ const maxTries = 5;
 const quizContainer = document.getElementById("quiz");
 const resultContainer = document.getElementById("result");
 const timerElement = document.getElementById("timer");
-const timeLimit = 30;
+const timeLimit = 60;
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const submit_button = document.getElementById("submit_button");
