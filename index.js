@@ -6,7 +6,6 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 import combinedRouter from "./routers/index.js";
 import session from "express-session";
 
-
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -14,18 +13,21 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(express.json());
 
-app.use(express.static("static"));
+app.use("/static", express.static("static"));
 
-
-app.use(session({
-  secret: 'gameofcode',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
-}));
+app.use(
+  session({
+    secret: "gameofcode",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/static/pages/index.html");
+  if (!req.session.user) {
+    res.sendFile(__dirname + "/static/pages/welcome.html");
+  }
 });
 
 app.get("/login", (req, res) => {
