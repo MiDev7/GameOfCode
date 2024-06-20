@@ -36,6 +36,14 @@ app.get("/signup", (req, res) => {
   res.sendFile(__dirname + "/static/pages/signup.html");
 });
 
+app.get("/level_one", (req, res) => {
+  res.sendFile(__dirname + "/static/pages/level_one.html");
+})
+
+app.get("/level_two", (req, res) => {
+  res.sendFile(__dirname + "/static/pages/level_two.html");
+})
+
 app.use(combinedRouter);
 
 app.listen(PORT, () => {
