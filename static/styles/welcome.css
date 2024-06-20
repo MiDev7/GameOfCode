@@ -1,0 +1,250 @@
+html, body {
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    background: #17174f;
+    overflow: hidden;
+}
+
+.gfg {
+    height: 20px;
+    width: 50px;
+
+}
+
+.mynav {
+    color: #fff;
+}
+
+.mynav li {
+    margin-bottom: 30px; /* Adjust the value as needed */
+}
+
+
+.mynav li a {
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    padding: 40px 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.mynav li a.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mynav li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mynav li a i {
+    width: 25px;
+    text-align: center;
+}
+
+.notification-badge {
+    background-color: rgba(255, 255, 255, 0.7);
+    float: right;
+    color: #222;
+    font-size: 14px;
+    padding: 0px 8px;
+    border-radius: 2px;
+}
+
+.welcome-text {
+    font-family: 'VT323', monospace;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    left: 57%;
+}
+
+.card-body {
+    width: 600px;
+    height: 350px;
+    background-color: #4B0000;
+    border: 1px solid #ddd;
+    position: relative; /* Ensure the child element respects its boundaries */
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire area */
+    position: absolute; /* Positions the image within the card body */
+    top: 0;
+    left: 0;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+  }
+
+.card-title {
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-name: flickering;
+    animation-timing-function: step-start;
+    color: #912914;
+    font-family: 'VT323', monospace;
+    font-size: 80px;
+    
+  }
+
+  
+@keyframes flickering {
+    0% {
+      color: #912914;
+      text-shadow: none;
+      transform: skewX(0);
+    }
+    5% {
+      color: #912914;
+      text-shadow: none;
+      transform: skewX(0);
+    }
+    10% {
+      color: #912914;
+      text-shadow: 1px 1px #eee;
+      transform: skewX(-15deg);
+    }
+    15% {
+      color: #ccc;
+      text-shadow: none;
+      transform: skewX(-15deg);
+    }
+    20% {
+      color: #912914;
+      text-shadow: none;
+      transform: skewX(0);
+    }
+    25% {
+      color: #ccc;
+      text-shadow: 2px 2px #912914;
+      transform: skewX(0);
+    }
+    30% {
+      color: #ccc;
+      text-shadow: 2px 2px #912914;
+      transform: skewX(0);
+    }
+    35% {
+      color: #ccc;
+      text-shadow: 2px 2px #912914;
+      transform: skewX(0);
+    }
+    37% {
+      color: #ccc;
+      text-shadow: 1px 1px #eee;
+      transform: skewX(0);
+    }
+    40% {
+      color: #912914;
+      text-shadow: 1px 1px #eee;
+      transform: skewX(0);
+    }
+    45% {
+      color: #912914;
+      text-shadow: 1px 1px #eee;
+      transform: skewX(0);
+    }
+    50% {
+      color: #912914;
+      text-shadow: none;
+      transform: skewX(0);
+    }
+    55% {
+      color: #912914;
+      text-shadow: none;
+      transform: skewX(0);
+    }
+    60% {
+      color: #912914;
+      text-shadow: none;
+      transform: skewX(0);
+    }
+    65% {
+      color: #912914;
+      text-shadow: none;
+      transform: skewX(0);
+    }
+    68% {
+      color: #912914;
+      text-shadow: 1px 1px #eee;
+      transform: skewX(0);
+    }
+    70% {
+      color: #912914;
+      text-shadow: 1px 1px #eee;
+      transform: skewX(0);
+    }
+    75% {
+      color: #912914;
+      text-shadow: 1px 1px #eee;
+      transform: skewX(10deg);
+    }
+    80% {
+      color: #912914;
+      text-shadow: 1px 1px #eee;
+      transform: skewX(10deg);
+    }
+    85% {
+      color: #912914;
+      text-shadow: 1px 1px #eee;
+      transform: skewX(10deg);
+    }
+    90% {
+      color: #912914;
+      text-shadow: none;
+      transform: skewX(0);
+    }
+    95% {
+      color: #912914;
+      text-shadow: 1px 1px #eee;
+      transform: skewX(0);
+    }
+    100% {
+      color: #912914;
+      text-shadow: none;
+      transform: skewX(0);
+    }
+}
+
+.custom-button {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    width: 80px;
+    position: absolute;
+    bottom: 30px; /* Adjust as needed */
+    left: 660px; /* Adjust as needed */
+    background-color: #C0392B;
+}
+
+.custom-button:hover {
+    background-color: #273C66;
+}
+
+
+  
+
+
+
+  
