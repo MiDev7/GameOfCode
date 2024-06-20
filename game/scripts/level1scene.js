@@ -1,3 +1,5 @@
+var notyf = new Notyf();
+
 import {loadBaseLevel,preloadBaseLevel} from "./baseLevelTemplate.js";
 const quiz_data = [
     {
