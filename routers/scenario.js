@@ -40,7 +40,9 @@ async function getDailyScenario(language) {
     } catch {
       continue;
     } finally {
-      return parsedJSON;
+      if (parsedJSON != null) {
+        return parsedJSON;
+      }
     }
   }
 }
@@ -76,6 +78,7 @@ try {
 
     router.get("/GetScenarioByLanguage", async (req, res) => {
       const response = await getDailyScenario("python");
+      console.log(response);
       res.json(response);
     });
   });

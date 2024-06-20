@@ -58,6 +58,16 @@ p {
     padding: 10px;
 }
 
+#explanationHeader {
+    display: none;
+    margin-block: 10px;
+}
+
+#explanationSection {
+    display: none;
+}   
+
+
 .option-card {
     font-size: 20px;
     width: auto;
