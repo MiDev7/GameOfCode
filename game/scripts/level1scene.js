@@ -66,77 +66,84 @@ class LevelOne extends Phaser.Scene
         this.background = this.add.image(770, 360,"level1_background");
         loadBaseLevel(this);
         this.loadButtons();
-        let plotText = this.add.text(160, 250,this.plot, { 
-            fontFamily: 'Arial', 
-            fontSize: '20px', 
-            color: '#ffffff', 
-            align: 'center', 
-            wordWrap: { width: 500 } // This is the key part for text wrapping
-        });
-        let questionText = this.add.text(160, 400,quiz_data[this.quizIndex].question, { 
-            fontFamily: 'Arial', 
-            fontSize: '20px', 
-            color: '#ffffff', 
-            align: 'center', 
-            wordWrap: { width: 500 } // This is the key part for text wrapping
-        });
-        let answer1 = this.add.text(920, 295,quiz_data[this.quizIndex].options[0], {
-            fontFamily: 'Arial', 
-            fontSize: '20px', 
-            color: 'black', 
-            align: 'center', 
-        });
-        let answer2 = this.add.text(915, 475,quiz_data[this.quizIndex].options[1], {
-            fontFamily: 'Arial', 
-            fontSize: '20px', 
-            color: 'black', 
-            align: 'center', 
-        });
-        let answer3 = this.add.text(1200, 295,quiz_data[this.quizIndex].options[2], {
-            fontFamily: 'Arial', 
-            fontSize: '20px', 
-            color: 'black', 
-            align: 'center', 
-        });
-        let answer4 = this.add.text(1200, 475,quiz_data[this.quizIndex].options[3], {
-            fontFamily: 'Arial', 
-            fontSize: '20px', 
-            color: 'black', 
-            align: 'center', 
-        });
+        this.addText();
     }
-    loadButtons()
+    addText()
     {
-        this.button1 = this.add.image(960, 310,"button").setInteractive();
-        this.button1.setScale(0.35);
-        this.button1.on('pointerdown', () => {
-            this.checkCorrectAnswer(quiz_data[this.quizIndex].options[0])
+        this.plotText = this.add.text(160, 250,this.plot, { 
+            fontFamily: 'Arial', 
+            fontSize: '20px', 
+            color: '#ffffff', 
+            align: 'center', 
+            wordWrap: { width: 500 } // This is the key part for text wrapping
         });
-    
-        this.button2 = this.add.image(960, 490,"button").setInteractive();
-        this.button2.setScale(0.35);
-        this.button2.on('pointerdown', () => {
-            this.checkCorrectAnswer(quiz_data[this.quizIndex].options[1])
+        this.questionText = this.add.text(160, 400,quiz_data[this.quizIndex].question, { 
+            fontFamily: 'Arial', 
+            fontSize: '20px', 
+            color: '#ffffff', 
+            align: 'center', 
+            wordWrap: { width: 500 } // This is the key part for text wrapping
         });
-    
-        this.button3 = this.add.image(1240, 310,"button").setInteractive();
-        this.button3.setScale(0.35);
-        this.button3.on('pointerdown', () => {
-            this.checkCorrectAnswer(quiz_data[this.quizIndex].options[2])
+        this.answer1 = this.add.text(920, 295,quiz_data[this.quizIndex].options[0], {
+            fontFamily: 'Arial', 
+            fontSize: '20px', 
+            color: 'black', 
+            align: 'center', 
         });
-    
-        this.button4 = this.add.image(1240, 490,"button").setInteractive();
-        this.button4.setScale(0.35);
-        this.button4.on('pointerdown', () => {
-            this.checkCorrectAnswer(quiz_data[this.quizIndex].options[3])
+        this.answer2 = this.add.text(920, 475,quiz_data[this.quizIndex].options[1], {
+            fontFamily: 'Arial', 
+            fontSize: '20px', 
+            color: 'black', 
+            align: 'center', 
+        });
+        this.answer3 = this.add.text(1200, 295,quiz_data[this.quizIndex].options[2], {
+            fontFamily: 'Arial', 
+            fontSize: '20px', 
+            color: 'black', 
+            align: 'center', 
+        });
+        this.answer4 = this.add.text(1200, 475,quiz_data[this.quizIndex].options[3], {
+            fontFamily: 'Arial', 
+            fontSize: '20px', 
+            color: 'black', 
+            align: 'center', 
         });
     }
+    loadButtons() {
+        const buttonConfig = [
+            { x: 960, y: 310, option: quiz_data[this.quizIndex].options[0] },
+            { x: 960, y: 490, option: quiz_data[this.quizIndex].options[1] },
+            { x: 1240, y: 310, option: quiz_data[this.quizIndex].options[2] },
+            { x: 1240, y: 490, option: quiz_data[this.quizIndex].options[3] }
+        ];
+    
+        buttonConfig.forEach((config, index) => {
+            let button = this.add.image(config.x, config.y, "button").setInteractive();
+            button.setScale(0.35);
+    
+            let answerText = new Phaser.GameObjects.Text(this, 0, 0, config.option, {
+                fontFamily: "Arial",
+                fontSize: "20px",
+                color: "black",
+                align: "center",
+            });
+    
+            Phaser.Display.Align.In.Center(answerText, button);
+    
+            button.on("pointerdown", () => {
+                this.checkCorrectAnswer(config.option);
+            });
+        });
+    }
+    
     checkCorrectAnswer(answer)
     {
         if(answer == quiz_data[this.quizIndex].correct)
         {
-            console.log("good");
             this.quizIndex++;
+            this.loadButtons();
+            this.addText();
+            this.plot.setText(" ");
         }
         else
         {
