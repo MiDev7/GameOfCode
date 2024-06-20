@@ -32,9 +32,6 @@ class LevelTwo extends Phaser.Scene {
     constructor() {
         super("levelTwo");
         this.quizIndex = 0;
-        this.timerText = null;
-        this.timerValue = 10; // Initial timer value in seconds
-        this.timerEvent = null;
     }
 
     preload() {
@@ -61,15 +58,7 @@ class LevelTwo extends Phaser.Scene {
         });
         this.currentStage = this.add.image(500, 100, "currentStage");
         this.currentStage.setScale(2.5);
-        this.timerText = this.add.text(0, 0, 'Time: ' + this.timerValue, { fontFamily: 'Arial', fontSize: '40px', color: '#ffffff' });
-        this.timerText.setShadow(1, 0, "black", 10 , true, true);
-        const delay = 1000; // 1000 milliseconds = 1 second
-        this.timerEvent = this.time.addEvent({
-            delay: delay,
-            callback: this.updateTimer,
-            callbackScope: this,
-            loop: true
-        });
+
     }
 
     loadButtons() {
@@ -128,56 +117,39 @@ class LevelTwo extends Phaser.Scene {
     }
     
     
-    checkCorrectAnswer(answer)
-    {
+    checkCorrectAnswer(answer) {
         console.log(this.quizIndex);
-        if(answer == quiz_data[this.quizIndex].correct)
-        {
+        if (this.quizIndex < quiz_data.length && answer === quiz_data[this.quizIndex].correct) {
             notyf.success({
-              message: "Good Answer!",
-              duration: 2000,
-              position: { x: "center", y: "top"}
+                message: "Good Answer!",
+                duration: 2000,
+                position: { x: "center", y: "top" }
             })
             this.quizIndex++;
             this.currentStage.x += 250;
-            this.questionText.setText(" "); 
-            if(this.quizIndex >= 3)
-            {
-              notyf.custom({
-                message: "You are moving to level three!",
-                duration: 2000,
-                position: { x: "center", y: "top"}
-              })
-              this.scene.start("levelThree");
+            this.questionText.setText(" ");
+            if (this.quizIndex >= quiz_data.length) {
+                notyf.success({
+                    message: "You are moving to level three!",
+                    duration: 2000,
+                    position: { x: "center", y: "top" }
+                })
+                this.scene.start("levelThree");
+            } else {
+                // Load next question
+                this.loadButtons();
+                this.questionText.setText(quiz_data[this.quizIndex].question);
             }
-        }
-        else
-        {
-          notyf.error({
-            message: "Incorrect Answer",
-            duration: 2000,
-            position: { x: "center", y: "top"}
-        })
-        return;
+        } else {
+            notyf.error({
+                message: "Incorrect Answer",
+                duration: 2000,
+                position: { x: "center", y: "top" }
+            })
+            return;
         }
     }
-    updateTimer() {
-        // Update the timer value and display it
-        this.timerValue--;
-        this.timerText.setText('Time: ' + this.timerValue);
     
-        // Check if timer has reached zero
-        if (this.timerValue <= 0) {
-            // Timer has expired, handle end game logic here
-            this.timerText.setText('Time: 0');
-            this.timerEvent.destroy(); // Stop the timer event
-    
-            // Add a slight delay before restarting the scene to avoid flickering
-            this.time.delayedCall(1000, () => {
-                this.scene.restart();
-            });
-        }
-    }
 }
 
 export default LevelTwo;

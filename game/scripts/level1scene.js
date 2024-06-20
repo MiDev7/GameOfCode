@@ -102,14 +102,14 @@ class LevelOne extends Phaser.Scene
     
     checkCorrectAnswer(answer)
     {
-        if(answer == quiz_data[this.quizIndex].correct)
+        if(this.quizIndex < quiz_data.length && answer == quiz_data[this.quizIndex].correct)
         {
             this.quizIndex++;
             this.currentStage.x += 250;
             this.questionText.setText(" "); 
             if(this.quizIndex >= 3)
             {
-              notyf.custom({
+              notyf.success({
                 message: "You are moving to level two!",
                 duration: 2000,
                 position: { x: "center", y: "top"}
@@ -120,7 +120,11 @@ class LevelOne extends Phaser.Scene
         }
         else
         {
-            console.log("bad");
+            notyf.error({
+                message: "Incorrect Answer! Try Again",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+            })   
         }
     }
     
