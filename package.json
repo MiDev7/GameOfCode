@@ -1,0 +1,24 @@
+{
+  "name": "gameofcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.13.0",
+    "dotenv": "^16.4.5",
+    "expres": "^0.0.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongodb": "^6.7.0",
+    "nodemon": "^3.1.3",
+    "notyf": "^3.10.0",
+    "path": "^0.12.7"
+  },
+  "type": "module"
+}
