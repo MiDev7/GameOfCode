@@ -1,10 +1,22 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from "dotenv";
-import { Router } from "express";
+import express from "express";
+import path from "path";
 
-const router = Router();
 
-const connectionURI = process.env.MONGO_URI;
+const router = express.Router();
+dotenv.config();
+const PORT = process.env.PORT || 3000;
+
+const password = "iY6is4cZ2bMle88Y";
+const username = "tb848";
+const server = "cluster0.2ior5mc.mongodb.net"; 
+
+const encodedeusername = encodeURIComponent(username);
+const encodedpassword = encodeURIComponent(password);
+
+// MongoDB connection URI
+const connectionURI = `mongodb+srv://${encodedeusername}:${encodedpassword}@${server}/?retryWrites=true&w=majority&appName=Cluster0`;
 
 const client = new MongoClient(connectionURI,{
     serverApi: {
@@ -13,6 +25,7 @@ const client = new MongoClient(connectionURI,{
       deprecationErrors: true,
     }
   });
+
 
 // Connect to MongoDB
 client
@@ -25,12 +38,12 @@ client
     console.log("connected to Users collection");
 
     // Serve static files from the current directory
-    router.use(express.static(path.join(__dirname)));
+    // router.use(express.static(path.join(__dirname)));
 
     // Handle GET requests to the root URL
-    router.get("/", (req, res) => {
-      res.sendFile(path.join(__dirname, "index.html"));
-    });
+    // router.get("/", (req, res) => {
+    //   res.sendFile(path.join(__dirname, "index.html"));
+    // });
 
     // Parse JSON bodies for incoming requests
     router.use(express.json());
@@ -96,9 +109,7 @@ client
       });
     });
 
-    // Start the server and listen on the specified port
-    router.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
+ })
   .catch((err) => console.error("Error connecting to MongoDB: ", err));
 
 export default router;
