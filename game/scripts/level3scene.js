@@ -31,10 +31,13 @@ class LevelThree extends Phaser.Scene
     {
         super("levelThree");
         this.quizIndex = 0;
+        this.tries = 0;
+        this.maxTries = 3; 
     }
     preload()
     {
         this.quizIndex = 0;
+        this.tries = 0;
         this.scene.stop("levelTwo");
         this.textures.remove("level_background");
         this.load.image("level_background", "assets/images/blue_city.png");
@@ -105,15 +108,49 @@ class LevelThree extends Phaser.Scene
     {
         if(answer == quiz_data[this.quizIndex].correct)
         {
-            this.quizIndex++;
-            this.currentStage.x += 250;
-            this.questionText.setText(" "); 
-            this.loadButtons();
+          notyf.success({
+            message: "Good Answer!",
+            duration: 2000,
+            position: { x: "center", y: "top"}
+          })
+          this.quizIndex++;
+          this.tries = 0;
+          this.currentStage.x += 250;
+          this.questionText.setText(" "); 
+          this.loadButtons();
         }
         else
         {
-            console.log("bad");
+          notyf.error({
+            message: "Incorrect Answer Tries left: " + (this.maxTries - this.tries),
+            duration: 2000,
+            position: { x: "center", y: "top"}
+        })
+        return;
         }
     }
-} 
+
+    showGameOver() {
+      notyf.error({
+        message: "Game Over! Restarting...",
+        duration: 2000,
+        position: { x: "center", y: "top"}
+      })    
+      this.time.delayedCall(2000, () => {
+          this.scene.restart(); // Restart the levelThree scene
+      });
+    }
+
+    showCompletionMessage() {
+      notyf.custom({
+        message: "Congractulations! You have completed the quiz!",
+        duration: 2000,
+        position: { x: "center", y: "top"}
+    })    
+  }
+}
+
+
+
+
 export default LevelThree;

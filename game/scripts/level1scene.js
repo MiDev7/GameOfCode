@@ -115,7 +115,12 @@ class LevelOne extends Phaser.Scene
             this.questionText.setText(" "); 
             if(this.quizIndex >= 3)
             {
-                this.scene.start("levelTwo");
+              notyf.custom({
+                message: "You are moving to level two!",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+              })
+              this.scene.start("levelTwo");
             }
             this.loadButtons();
         }
@@ -131,16 +136,4 @@ class LevelOne extends Phaser.Scene
     }
     
 } 
-function startTimer() {
-    let timeLeft = timeLimit;
-    timerElement.textContent = timeLeft;
-    timerInterval = setInterval(() => {
-      timeLeft--;
-      timerElement.textContent = timeLeft;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        endGame("timer's up! you have run out of time");
-      }
-    }, 1000);
-  }
 export default LevelOne;;

@@ -1,4 +1,6 @@
-// ok
+
+var notyf = new Notyf();
+
 import {loadBaseLevel,preloadBaseLevel} from "./baseLevelTemplate.js";
 const quiz_data = [
     {
@@ -106,17 +108,32 @@ class LevelTwo extends Phaser.Scene
         console.log(this.quizIndex);
         if(answer == quiz_data[this.quizIndex].correct)
         {
+            notyf.success({
+              message: "Good Answer!",
+              duration: 2000,
+              position: { x: "center", y: "top"}
+            })
             this.quizIndex++;
             this.currentStage.x += 250;
             this.questionText.setText(" "); 
             if(this.quizIndex >= 3)
             {
-                this.scene.start("levelThree");
+              notyf.custom({
+                message: "You are moving to level three!",
+                duration: 2000,
+                position: { x: "center", y: "top"}
+              })
+              this.scene.start("levelThree");
             }
         }
         else
         {
-            console.log("bad");
+          notyf.error({
+            message: "Incorrect Answer",
+            duration: 2000,
+            position: { x: "center", y: "top"}
+        })
+        return;
         }
     }
 } 
