@@ -17,7 +17,7 @@ class IntroScene extends Phaser.Scene
         this.gameTitle = this.add.text(590, 110, "The Story", { font: "80px VT323", fill: "#fff" }); 
         this.displayText();
         this.input.keyboard.on('keydown', function (event) {
-            this.scene.start("baseLevel");
+            this.scene.start("levelOne");
         }, this);
     }
     update()
