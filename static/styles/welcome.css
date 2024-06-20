@@ -1,7 +1,7 @@
 html, body {
     height: 100%;
-    font-family: 'Ubuntu', sans-serif;
-    background: #17174f;
+    font-family: 'VT323', monospace;
+    background: #19181e;
     overflow: hidden;
 }
 
@@ -17,6 +17,7 @@ html, body {
 
 .mynav li {
     margin-bottom: 30px; /* Adjust the value as needed */
+
 }
 
 
@@ -26,8 +27,12 @@ html, body {
     width: 100%;
     display: block;
     border-radius: 5px;
-    padding: 40px 0;
-    font-family: 'Ubuntu', sans-serif;
+    font-size:30px;
+    padding: 10px 10px;
+}
+
+.mynav li a span {
+  margin-left: 10px;
 }
 
 .mynav li a.active {
@@ -66,12 +71,12 @@ html, body {
 }
 
 .card-body {
-    width: 600px;
-    height: 350px;
+    width: 800px;
+    height: 450px;
     background-color: #4B0000;
     border: 1px solid #ddd;
     position: relative; /* Ensure the child element respects its boundaries */
-}
+} 
 
 .card-img-top {
     width: 100%;
