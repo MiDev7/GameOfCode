@@ -1,5 +1,4 @@
 var notyf = new Notyf();
-// ok
 
 import {loadBaseLevel,preloadBaseLevel} from "./baseLevelTemplate.js";
 const quiz_data = [
@@ -105,11 +104,6 @@ class LevelOne extends Phaser.Scene
     {
         if(answer == quiz_data[this.quizIndex].correct)
         {
-            notyf.success({
-              message: "  Good Answer!",
-              duration: 2000,
-              position: { x: "center", y: "top"}
-            })
             this.quizIndex++;
             this.currentStage.x += 250;
             this.questionText.setText(" "); 
@@ -126,12 +120,7 @@ class LevelOne extends Phaser.Scene
         }
         else
         {
-          notyf.error({
-            message: "Incorrect Answer",
-            duration: 2000,
-            position: { x: "center", y: "top"}
-        })
-        return;
+            console.log("bad");
         }
     }
     
