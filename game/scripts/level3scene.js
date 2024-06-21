@@ -28,6 +28,9 @@ class LevelThree extends Phaser.Scene {
         this.quizIndex = 0;
         this.tries = 0;
         this.maxTries = 3; 
+        this.timerText = null;
+        this.timerValue = 60; // Initial timer value in seconds
+        this.timerEvent = null;
     }
 
     preload() {
@@ -56,6 +59,15 @@ class LevelThree extends Phaser.Scene {
         });
         this.currentStage = this.add.image(500, 100, "currentStage");
         this.currentStage.setScale(2.5);
+        this.timerText = this.add.text(0, 0, 'Time: ' + this.timerValue, { fontFamily: 'Arial', fontSize: '40px', color: '#ffffff' });
+        this.timerText.setShadow(1, 0, "black", 10 , true, true);
+        const delay = 1000; // 1000 milliseconds = 1 second
+        this.timerEvent = this.time.addEvent({
+            delay: delay,
+            callback: this.updateTimer,
+            callbackScope: this,
+            loop: true
+        });
     }
 
     loadButtons() {
@@ -139,6 +151,24 @@ class LevelThree extends Phaser.Scene {
                 message: "Incorrect Answer",
                 duration: 2000,
                 position: { x: "center", y: "top" }
+            });
+        }
+        
+    }
+    updateTimer() {
+        // Update the timer value and display it
+        this.timerValue--;
+        this.timerText.setText('Time: ' + this.timerValue);
+    
+        // Check if timer has reached zero
+        if (this.timerValue <= 0) {
+            // Timer has expired, handle end game logic here
+            this.timerText.setText('Time: 0');
+            this.timerEvent.destroy(); // Stop the timer event
+    
+            // Add a slight delay before restarting the scene to avoid flickering
+            this.time.delayedCall(1000, () => {
+                this.scene.restart();
             });
         }
     }
