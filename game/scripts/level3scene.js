@@ -25,12 +25,6 @@ const quiz_data = [
 class LevelThree extends Phaser.Scene {
     constructor() {
         super("levelThree");
-        this.quizIndex = 0;
-        this.tries = 0;
-        this.maxTries = 3; 
-        this.timerText = null;
-        this.timerValue = 60; // Initial timer value in seconds
-        this.timerEvent = null;
     }
 
     preload() {
@@ -47,6 +41,12 @@ class LevelThree extends Phaser.Scene {
     }
 
     create() {
+        this.quizIndex = 0;
+        this.tries = 0;
+        this.maxTries = 3; 
+        this.timerText = null;
+        this.timerValue = 60; // Initial timer value in seconds
+        this.timerEvent = null;
         this.background = this.add.image(770, 360, "level_background");
         loadBaseLevel(this);
         this.loadButtons();
@@ -165,8 +165,6 @@ class LevelThree extends Phaser.Scene {
             // Timer has expired, handle end game logic here
             this.timerText.setText('Time: 0');
             this.timerEvent.destroy(); // Stop the timer event
-    
-            // Add a slight delay before restarting the scene to avoid flickering
             this.time.delayedCall(1000, () => {
                 this.scene.restart();
             });

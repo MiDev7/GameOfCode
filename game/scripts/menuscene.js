@@ -11,7 +11,16 @@ class MenuScene extends Phaser.Scene
     }
     create()
     {
-        this.setupMenuScene();
+        this.timer = this.time.addEvent
+        ({
+            delay: 500,
+            callback: function()
+            {
+                this.setupMenuScene();
+            },
+            callbackScope: this,
+            loop: false
+        });
    
         this.input.keyboard.on('keydown', function (event) {
             this.start_sfx.play();  
